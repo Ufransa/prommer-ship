@@ -3,42 +3,353 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>prommer.net</title>
+<title>Press &amp; Media — Thomas Prommer</title>
+<meta name="description" content="Press and media resources for Thomas Prommer, founder of We The Flywheel: bios, talking points, suggested questions, and contact.">
 <style>
   :root {
-    color-scheme: light dark;
+    color-scheme: dark;
+    --bg: #0c0c0d;
+    --bg-raised: #141416;
+    --text: #e9e8e4;
+    --text-dim: #9a988f;
+    --line: rgba(255,255,255,0.08);
+    --accent: #d99a3d;
+    --tk-bg: rgba(217,154,61,0.15);
+    --tk-text: #e6ac52;
+    --serif: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
+
+  * { box-sizing: border-box; }
+
   body {
     margin: 0;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #0b0b0c;
-    color: #f2f2f2;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    text-align: center;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
   }
-  main {
-    padding: 2rem;
-  }
-  h1 {
-    font-size: 1.75rem;
+
+  a { color: var(--text); }
+  a:hover { color: var(--accent); }
+
+  .tk {
+    background: var(--tk-bg);
+    color: var(--tk-text);
+    padding: 0.05em 0.4em;
+    border-radius: 4px;
     font-weight: 600;
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.02em;
+    font-size: 0.92em;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
   }
-  p {
-    color: #9a9a9a;
-    font-size: 1rem;
+
+  header.site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(12,12,13,0.9);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0.9rem 1.5rem;
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    font-size: 0.85rem;
+  }
+
+  .nav-inner a {
+    color: var(--text-dim);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav-inner a:hover { color: var(--accent); }
+
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  section {
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  #hero {
+    padding-top: 4.5rem;
+    padding-bottom: 3rem;
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin: 0 0 1rem;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.1rem, 5vw, 2.9rem);
+    line-height: 1.15;
+    margin: 0 0 0.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .one-liner {
+    font-size: 1.15rem;
+    color: var(--text-dim);
+    max-width: 55ch;
     margin: 0;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    margin: 0 0 2rem;
+    letter-spacing: -0.005em;
+  }
+
+  h3 {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    margin: 0 0 0.6rem;
+  }
+
+  .bio-block {
+    margin-bottom: 2.25rem;
+  }
+  .bio-block:last-child { margin-bottom: 0; }
+  .bio-block p {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  ol.talking-points, ol.questions {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: item;
+  }
+
+  ol.talking-points li, ol.questions li {
+    counter-increment: item;
+    position: relative;
+    padding: 1.1rem 0 1.1rem 2.6rem;
+    border-top: 1px solid var(--line);
+  }
+  ol.talking-points li:first-child, ol.questions li:first-child {
+    border-top: none;
+  }
+
+  ol.talking-points li::before, ol.questions li::before {
+    content: counter(item, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 1.15rem;
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    color: var(--accent);
+  }
+
+  .tp-title {
+    font-weight: 600;
+    margin: 0 0 0.35rem;
+    font-size: 1.02rem;
+  }
+  .tp-body {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+  }
+
+  .questions li p { margin: 0; }
+
+  ul.links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.9rem;
+  }
+  ul.links li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--line);
+  }
+  ul.links li:last-child { border-bottom: none; padding-bottom: 0; }
+  ul.links .label {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  ul.links a { text-decoration: none; border-bottom: 1px solid var(--line); }
+  ul.links a:hover { border-bottom-color: var(--accent); }
+
+  .contact-cta p {
+    max-width: 55ch;
+    color: var(--text-dim);
+  }
+
+  .btn {
+    display: inline-block;
+    margin-top: 1.25rem;
+    padding: 0.85rem 1.6rem;
+    background: var(--accent);
+    color: #0c0c0d;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.95rem;
+  }
+  .btn:hover { background: #e6ac52; color: #0c0c0d; }
+
+  footer {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3.5rem;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 640px) {
+    section { padding: 2.75rem 0; }
   }
 </style>
 </head>
 <body>
+
+<header class="site-nav">
+  <nav class="nav-inner">
+    <a href="#bios">Bios</a>
+    <a href="#talking-points">Talking Points</a>
+    <a href="#questions">Questions</a>
+    <a href="#links">Links</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
 <main>
-  <h1>Shipping soon.</h1>
-  <p>prommer.net is being rebuilt.</p>
+
+  <section id="hero">
+    <p class="eyebrow">Press &amp; Media Kit</p>
+    <h1>Thomas Prommer</h1>
+    <p class="one-liner">Founder of We The Flywheel. An AI-native operator building <span class="tk">[TK — one-line description of what We The Flywheel does]</span>.</p>
+  </section>
+
+  <section id="bios">
+    <h2>Bios</h2>
+
+    <div class="bio-block">
+      <h3>One-liner</h3>
+      <p>Thomas Prommer is the founder of We The Flywheel, an AI-native operator building <span class="tk">[TK]</span>.</p>
+    </div>
+
+    <div class="bio-block">
+      <h3>Short (~50 words)</h3>
+      <p>
+        Thomas Prommer is the founder of We The Flywheel, where he operates as an
+        AI-native founder rather than a traditional operator — running the business
+        with agentic systems handling <span class="tk">[TK — which operations]</span>
+        end to end. Previously <span class="tk">[TK — prior role/company]</span>.
+        Based in <span class="tk">[TK — location]</span>.
+      </p>
+    </div>
+
+    <div class="bio-block">
+      <h3>Long (~150 words)</h3>
+      <p>
+        Thomas Prommer is the founder of We The Flywheel, <span class="tk">[TK — one-sentence
+        description of the company and who it serves]</span>. He describes himself as an
+        AI-native operator: rather than bolting AI tools onto existing workflows, he
+        rebuilds operations around agents from the ground up, with systems that execute
+        multi-step business processes rather than just assist with them.
+        Before founding We The Flywheel, Thomas <span class="tk">[TK — career background,
+        prior companies or roles]</span>. His work has been covered by
+        <span class="tk">[TK — press mentions]</span>, and he has spoken at
+        <span class="tk">[TK — talks, events, or podcasts]</span>.
+        He writes about agentic operations, the future of the org chart, and what
+        actually breaks when founders hand real work to autonomous systems.
+        <span class="tk">[TK — location / current base]</span>.
+      </p>
+    </div>
+  </section>
+
+  <section id="talking-points">
+    <h2>Talking Points — Agentic Operations</h2>
+    <ol class="talking-points">
+      <li>
+        <p class="tp-title">Agentic operations, not agentic chat</p>
+        <p class="tp-body">The shift from AI as a conversational assistant to AI as the system that actually runs a business process, end to end, without a human approving every step.</p>
+      </li>
+      <li>
+        <p class="tp-title">Rebuild, don't bolt on</p>
+        <p class="tp-body">Why retrofitting AI onto an existing org chart caps the upside — and what it looks like to design operations around agents from day one instead.</p>
+      </li>
+      <li>
+        <p class="tp-title">Agents belong on the org chart</p>
+        <p class="tp-body">Treating an agent as an accountable unit with defined scope and a clear owner, not just a tool bolted onto a human's workflow.</p>
+      </li>
+      <li>
+        <p class="tp-title">The real bottleneck is trust, not capability</p>
+        <p class="tp-body">Most agentic systems today can already do the work. What's missing is a way to know when to trust the output without re-checking it by hand.</p>
+      </li>
+      <li>
+        <p class="tp-title">What breaks first</p>
+        <p class="tp-body">The failure modes that only show up once you hand real operations to agents — and why they rarely look like the failures people expect.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section id="questions">
+    <h2>Suggested Podcast Questions</h2>
+    <ol class="questions">
+      <li><p>What does "AI-native operator" actually mean day to day — what changed in how you run We The Flywheel?</p></li>
+      <li><p>Where's the line between an agent that assists with a process and one that runs it end to end?</p></li>
+      <li><p>What was the first operation you fully handed to an agent — and what broke?</p></li>
+      <li><p>How do you decide what not to automate?</p></li>
+      <li><p>If a founder wants to move toward agentic operations, what's the first thing they should do in the next 30 days?</p></li>
+      <li><p>Where do agentic systems fail silently, and how do you catch it before it costs you?</p></li>
+    </ol>
+  </section>
+
+  <section id="links">
+    <h2>Links</h2>
+    <ul class="links">
+      <li><span class="label">Website</span> <a href="https://prommer.net">prommer.net</a></li>
+      <li><span class="label">Company</span> <span class="tk">[TK — We The Flywheel site]</span></li>
+      <li><span class="label">X / Twitter</span> <span class="tk">[TK]</span></li>
+      <li><span class="label">LinkedIn</span> <span class="tk">[TK]</span></li>
+      <li><span class="label">Headshot / press photo</span> <span class="tk">[TK]</span></li>
+    </ul>
+  </section>
+
+  <section id="contact" class="contact-cta">
+    <h2>Press &amp; Booking</h2>
+    <p>For interviews, podcast bookings, or press inquiries, reach out directly.</p>
+    <a class="btn" href="mailto:TK@example.com">Contact <span style="text-transform:none">[TK — press email]</span></a>
+  </section>
+
 </main>
+
+<footer>
+  Press kit for Thomas Prommer, founder of We The Flywheel.
+</footer>
+
 </body>
 </html>
